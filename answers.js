@@ -81,7 +81,7 @@ use `Array.prototype.reduce` to do your work.
 **Hint 2**: You can create an array of vowels and use `Array.prototype.indexOf` to check if the current letter is a vowel.*/
 
 function countVowels (strg){
-    var arrString = strg.split("");
+var arrString = strg.split("");
     var vowels = ["a", "e", "i", "o","u","y"];
 
     return arrString.reduce(function (a, b){
@@ -93,4 +93,53 @@ function countVowels (strg){
 };
 
 console.log(countVowels("i am in Montreal"));
-//arr.indexOf(searchElement[, fromIndex = 0])
+
+var str = "Hello World!";
+var res = str.toLowerCase();
+
+/* #6 ## Exercise 6
+Write a function called `highLow` that takes an array of numbers, and returns an object with a property `highest` 
+containing the highest number, and a property `lowest` containing the lowest number, using `Array.prototype.reduce`.
+For example, starting with `[1, -10, 20, 40, 5]`, your function should return `{highest: 40, lowest: -10}`.
+**Hint**: Javascript has a special value called `Infinity`, which is higher than any other number. See if you can 
+initialize your reduce accumulator with `Infinity` and `-Infinity` :)
+console.log(Infinity         ); /* Infinity   
+console.log(Infinity + 1     ); /* Infinity   
+console.log(Math.pow(10,1000)); /* Infinity  
+console.log(Math.log(0)      ); /* -Infinity  
+console.log(1 / Infinity     ); /* 0
+*/
+
+function highLow (array) {
+    var arr = array;
+    //reduce to find highest
+    return arr.reduce(function (obj, ele){
+        if (obj.highest < ele ){
+           obj.highest =  ele;
+        }
+        if(obj.lowest > ele){
+           obj.lowest = ele;
+        } 
+        return obj;
+    }, {highest: -Infinity, lowest: Infinity});
+};
+console.log(highLow([1, 2, -666, 666, 31, -2]))
+
+/*//I want to start with array animals and end up with a count for each species
+
+//result should { dog : 2, cat: 1, bunny: 1, giraffe: 1, possum: 1 }
+
+animals.reduce(function(animalCounts, animal){
+    /* Look at each animal in turn:
+        If the key for its species is already in the accumulator, then add one to it. Otherwise, create this key and set it to 1
+       
+   // console.log(animalCounts);
+    
+    if(animalCounts[animal.species]){
+        animalCounts[animal.species] += 1;
+    }
+    else{
+        animalCounts[animal.species] = 1;    
+    }
+    return animalCounts;
+}, {} ); */
