@@ -55,3 +55,21 @@ function isPos (number){
 };
 
 console.log(filterArray([1,2,-3,-3,8], isPos));
+
+/*#4 Write a function called longestWord that takes a string as argument, and returns the longest word in the string. 
+You should use Array.prototype.reduce to do your work.
+Hint: You can use String.prototype.split to split the string into an array of words.*/
+
+function longestWord (strg){
+    var arrString = strg.split(" ");
+    return arrString.reduce(function(a, b){
+        if (b.length > a.length){
+            return b;
+        }
+        else {
+            return a;
+        }
+}, "");
+}
+console.log(longestWord("I am in Montreal"));
+
