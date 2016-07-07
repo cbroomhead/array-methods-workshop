@@ -30,3 +30,28 @@ function getPositives2 (array){
     })
 }
 console.log(getPositives2([1, -2, 3, -4, 5, -6, 7, 8]));
+
+/* #2B Re-do exercise 1 by first filtering the input array, and then printing the numbers from the 
+filtered array. Your code will look something like: `return arr.filter(…).forEach(…) */
+function printPositives3 (array) {
+    return array.filter (function (num){
+        return num > 0;
+    }).forEach (function(num) { 
+        console.log(num);
+    });
+}  
+printPositives3([1, -2, 3, -4, 5, -6, 7, 8]);
+
+/*#3 Exercise 3
+Write a function called `filterArray` that takes an array AND a function as arguments. Your `filter` function should return 
+a new array that contains only the elements where the passed function returns a truthy value.*/
+
+function filterArray (arr, func){
+    return arr.filter(func);
+}
+
+function isPos (number){
+    return (number > 0);
+};
+
+console.log(filterArray([1,2,-3,-3,8], isPos));
