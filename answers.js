@@ -125,21 +125,43 @@ function highLow (array) {
 };
 console.log(highLow([1, 2, -666, 666, 31, -2]))
 
-/*//I want to start with array animals and end up with a count for each species
+/*## Exercise 7
+Expanding on exercise 6, write a function called `highLowTwo` that takes an array of numbers, and 
+returns the higest, second highest, lowest, and second lowest numbers.
+For example, starting with `[1, -10, 20, 40, 5]`, your function should return:
+```json
+{
+  "highest": 40,
+  "secondHighest": 20,
+  "lowest": -10,
+  "secondLowest": 5
+}
+```*/
 
-//result should { dog : 2, cat: 1, bunny: 1, giraffe: 1, possum: 1 }
+function highLowTwo (array){
+    var arr = array;
+    //reduce to find highest
+    return arr.reduce(function (a, b){
+        if (a.highest < b ){
+           a.secHighest = a.highest;
+           a.highest =  b;
+           
+        }
+        if(a.lowest > b){
+           a.secLowest = a.lowest;
+           a.lowest = b;
+           
+        } 
+        if(b < a.highest && b > a.secHighest){
+            a.secHighest = b;
+            
+        }
+        if(b > a.lowest && b < a.secLowest){
+            a.secLowest = b;
+            
+        }
+        return a;
+    }, {highest: -Infinity, secHighest: -Infinity, lowest: Infinity, secLowest: Infinity});
+};
+console.log(highLowTwo([1, -10, 20, 40, 5]))
 
-animals.reduce(function(animalCounts, animal){
-    /* Look at each animal in turn:
-        If the key for its species is already in the accumulator, then add one to it. Otherwise, create this key and set it to 1
-       
-   // console.log(animalCounts);
-    
-    if(animalCounts[animal.species]){
-        animalCounts[animal.species] += 1;
-    }
-    else{
-        animalCounts[animal.species] = 1;    
-    }
-    return animalCounts;
-}, {} ); */
