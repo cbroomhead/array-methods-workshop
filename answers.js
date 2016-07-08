@@ -145,12 +145,10 @@ function highLowTwo (array){
         if (a.highest < b ){
            a.secHighest = a.highest;
            a.highest =  b;
-           
         }
         if(a.lowest > b){
            a.secLowest = a.lowest;
            a.lowest = b;
-           
         } 
         if(b < a.highest && b > a.secHighest){
             a.secHighest = b;
@@ -158,10 +156,53 @@ function highLowTwo (array){
         }
         if(b > a.lowest && b < a.secLowest){
             a.secLowest = b;
-            
         }
         return a;
     }, {highest: -Infinity, secHighest: -Infinity, lowest: Infinity, secLowest: Infinity});
 };
 console.log(highLowTwo([1, -10, 20, 40, 5]))
+
+/*## Exercise 8
+Write a function called `countChars` that takes a string, and returns an object where the keys are letters, and 
+the value is the number of times that letter appears.
+For example, with input "hello world", the output should be:
+```json
+{
+  "h": 1,
+  "e": 1,
+  "l": 3,
+  "o": 2,
+  "w": 1,
+  "r": 1,
+  "d": 1
+}
+```
+*/
+function spaceDetect (strg){
+    if (strg != " "){
+        return true;
+    }
+}
+
+
+function countChars (strg){
+    var splitStrg = strg.split("");
+    var finalArr = splitStrg.filter(spaceDetect)
+    return finalArr.reduce(function (obj, char){
+        if (obj[char]){
+            obj[char] += 1;
+        }
+        else {
+            obj[char] = 1;
+        }
+        return obj;
+    }, {} );
+};
+
+console.log(countChars("Hello World"));
+
+
+
+
+
 
